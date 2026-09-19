@@ -1,32 +1,59 @@
-# React + TypeScript + Vite
+# ReceiptVault AI - Expense Management & Image-to-Excel Data Extraction
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A modern web application built with **React, TypeScript, Vite, and Vanilla CSS** designed for company members to upload receipt images, extract data automatically using OCR (Image-to-Text), transfer and review records, export formatted Microsoft Excel (`.xlsx`) files, and enforce a 30-day monthly database image purge.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🌟 Key Features
 
-## React Compiler
+1. **Member Upload Hub**:
+   - Upload receipt images (JPG, PNG, WebP, SVG).
+   - Drag-and-drop interface with built-in sample receipt presets for quick testing.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. **Smart OCR Data Extraction**:
+   - Automatically scans receipt text to extract **Vendor Name**, **Receipt Date**, **Tax Amount**, **Total Amount**, and **Category**.
+   - Eliminates repetitive manual data entry.
 
-## Expanding the Oxlint configuration
+3. **Admin Verification & Transfer Studio**:
+   - Side-by-side inspection viewer with image zoom and pan controls.
+   - Re-scan OCR capability and 1-click **Approve & Verify** workflow.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+4. **Microsoft Excel Exporter (`.xlsx`)**:
+   - Exports formatted Excel workbooks containing:
+     - **Sheet 1 (Detailed Log)**: Full receipt audit log with IDs, dates, vendors, tax, amounts, employees, and verification status.
+     - **Sheet 2 (Category Breakdown)**: Spending breakdown by category, average spend per item, and grand total.
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+5. **Monthly Database Purge & Retention Policy**:
+   - Automated 30-day retention engine that wipes heavy image blobs and raw OCR text past 30 days to keep database storage light.
+   - Financial metadata is retained 100% permanently for accounting audits.
+
+---
+
+## 🚀 Quick Start
+
+### 1. Install Dependencies
+```bash
+npm install
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+### 2. Run Development Server
+```bash
+npm run dev
+```
+
+Open [http://localhost:5173/](http://localhost:5173/) in your browser.
+
+### 3. Build for Production
+```bash
+npm run build
+```
+
+---
+
+## 🛠 Tech Stack
+
+- **Frontend**: React 19, TypeScript, Vite
+- **Styling**: Modern Vanilla CSS with dark glassmorphic design system
+- **OCR Engine**: Tesseract.js (Client-side Image Recognition)
+- **Spreadsheet Generation**: `xlsx` (SheetJS)
+- **Icons & FX**: Lucide React, Canvas Confetti

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { X, Upload, Sparkles, Check, Image as ImageIcon } from 'lucide-react';
 import type { CategoryType, ReceiptItem } from '../types/receipt';
 import { scanReceiptImage } from '../services/ocrService';
-import { generateSampleReceiptSvg } from '../utils/sampleImages';
 
 interface UploadModalProps {
   isOpen: boolean;
@@ -55,26 +54,6 @@ export const UploadModal: React.FC<UploadModalProps> = ({
       await triggerOCR(src);
     };
     reader.readAsDataURL(file);
-  };
-
-  const loadPresetSample = async (presetType: 'bistro' | 'tech' | 'hotel') => {
-    let src = '';
-    let estimatedKB = 150;
-    
-    if (presetType === 'bistro') {
-      src = generateSampleReceiptSvg('Gourmet Bistro & Grill', '89.50', '2026-09-19', ['Steak Frites: $42.00', 'Wine Glass: $18.00', 'Dessert: $15.00']);
-      estimatedKB = 165;
-    } else if (presetType === 'tech') {
-      src = generateSampleReceiptSvg('JetBrains Dev Tools', '299.00', '2026-09-19', ['All Products Pack (1yr): $271.82']);
-      estimatedKB = 190;
-    } else {
-      src = generateSampleReceiptSvg('Hilton Garden Suites', '412.00', '2026-09-17', ['Executive Suite 1-Night: $374.55']);
-      estimatedKB = 220;
-    }
-
-    setImagePreview(src);
-    setImageSizeKB(estimatedKB);
-    await triggerOCR(src);
   };
 
   const triggerOCR = async (src: string) => {
@@ -177,35 +156,7 @@ export const UploadModal: React.FC<UploadModalProps> = ({
                 onChange={e => e.target.files?.[0] && handleFileUpload(e.target.files[0])}
               />
 
-              <div style={{ marginTop: 14 }}>
-                <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginBottom: 8 }}>
-                  Don't have a receipt file handy? Try a quick preset:
-                </p>
-                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                  <button 
-                    type="button" 
-                    className="btn btn-secondary btn-sm"
-                    onClick={() => loadPresetSample('bistro')}
-                  >
-                    + Dining Sample ($89.50)
-                  </button>
-                  <button 
-                    type="button" 
-                    className="btn btn-secondary btn-sm"
-                    onClick={() => loadPresetSample('tech')}
-                  >
-                    + Tech Software ($299.00)
-                  </button>
-                  <button 
-                    type="button" 
-                    className="btn btn-secondary btn-sm"
-                    onClick={() => loadPresetSample('hotel')}
-                  >
-                    + Hotel Receipt ($412.00)
-                  </button>
-                </div>
               </div>
-            </div>
 
             {/* Right Column: Form Fields with OCR Auto-fill */}
             <form onSubmit={handleSubmit} className="form-panel">

@@ -1,83 +1,8 @@
 import type { ReceiptItem, StorageStats } from '../types/receipt';
-import { generateSampleReceiptSvg } from '../utils/sampleImages';
 
-const STORAGE_KEY = 'receipt_vault_db_v1';
+const STORAGE_KEY = 'receipt_vault_db_v2';
 
-const INITIAL_DEMO_DATA: ReceiptItem[] = [
-  {
-    id: 'rct_001',
-    uploaderName: 'Sarah Jenkins',
-    uploaderRole: 'employee',
-    uploadDate: '2026-09-18T14:22:00Z',
-    category: 'Meals & Dining',
-    vendorName: 'Bistro Luxe',
-    receiptDate: '2026-09-18',
-    totalAmount: 142.50,
-    taxAmount: 14.25,
-    currency: 'USD',
-    status: 'verified',
-    imageUrl: generateSampleReceiptSvg('Bistro Luxe', '142.50', '2026-09-18', ['Client Lunch (2x): $120.00', 'Sparkling Water: $9.50']),
-    imageSizeKB: 185,
-    notes: 'Q3 Partner Lunch with TechCorp Reps',
-    ocrConfidence: 94,
-    verifiedBy: 'Alex Chen (Admin)',
-    verifiedAt: '2026-09-18T15:10:00Z'
-  },
-  {
-    id: 'rct_002',
-    uploaderName: 'David Miller',
-    uploaderRole: 'employee',
-    uploadDate: '2026-09-19T09:15:00Z',
-    category: 'Software & Tech',
-    vendorName: 'AWS Cloud Services',
-    receiptDate: '2026-09-15',
-    totalAmount: 849.00,
-    taxAmount: 84.90,
-    currency: 'USD',
-    status: 'pending',
-    imageUrl: generateSampleReceiptSvg('AWS Cloud Services', '849.00', '2026-09-15', ['EC2 Hosting Suite: $600.00', 'S3 Storage Tier: $171.82']),
-    imageSizeKB: 210,
-    notes: 'Monthly infrastructure server hosting cost',
-    ocrConfidence: 98
-  },
-  {
-    id: 'rct_003',
-    uploaderName: 'Emily Zhang',
-    uploaderRole: 'employee',
-    uploadDate: '2026-08-10T11:45:00Z',
-    category: 'Office Supplies',
-    vendorName: 'Staples Enterprise',
-    receiptDate: '2026-08-10',
-    totalAmount: 315.80,
-    taxAmount: 31.58,
-    currency: 'USD',
-    status: 'purged',
-    imageUrl: null, // Image wiped in last month's scheduled purge!
-    imageSizeKB: 0,
-    notes: 'Purged during August monthly storage cleanup.',
-    ocrConfidence: 91,
-    purgedAt: '2026-09-01T00:00:00Z',
-    verifiedBy: 'Alex Chen (Admin)',
-    verifiedAt: '2026-08-11T10:00:00Z'
-  },
-  {
-    id: 'rct_004',
-    uploaderName: 'Michael Brown',
-    uploaderRole: 'employee',
-    uploadDate: '2026-09-12T16:00:00Z',
-    category: 'Travel & Lodging',
-    vendorName: 'Grand Hyatt Hotel',
-    receiptDate: '2026-09-11',
-    totalAmount: 520.00,
-    taxAmount: 52.00,
-    currency: 'USD',
-    status: 'pending',
-    imageUrl: generateSampleReceiptSvg('Grand Hyatt Hotel', '520.00', '2026-09-11', ['2 Night Deluxe Suite: $472.73']),
-    imageSizeKB: 240,
-    notes: 'Annual developer conference accommodation',
-    ocrConfidence: 89
-  }
-];
+const INITIAL_DEMO_DATA: ReceiptItem[] = [];
 
 export const getReceiptsFromStorage = (): ReceiptItem[] => {
   try {

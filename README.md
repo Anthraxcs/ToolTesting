@@ -29,24 +29,25 @@ A modern web application built with **React, TypeScript, Vite, and Vanilla CSS**
 
 ---
 
-## 🚀 Quick Start
+## 🚀 Quick Start (Running in VS Code)
 
-### 1. Install Dependencies
-```bash
-npm install
-```
+### Option A: 1-Click Launch in VS Code
+1. Open the cloned repository folder in **VS Code**.
+2. Press **`F5`** (or go to **Run -> Start Debugging**).
+3. VS Code will automatically start the server and open the app in your browser!
 
-### 2. Run Development Server
-```bash
-npm run dev
-```
+---
 
-Open [http://localhost:5173/](http://localhost:5173/) in your browser.
-
-### 3. Build for Production
-```bash
-npm run build
-```
+### Option B: Terminal Command
+1. Install dependencies (first time only):
+   ```bash
+   npm install
+   ```
+2. Start the local server:
+   ```bash
+   npm run dev
+   ```
+3. Open [http://localhost:5173/](http://localhost:5173/) in your browser.
 
 ---
 
